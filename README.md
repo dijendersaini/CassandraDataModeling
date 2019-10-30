@@ -13,3 +13,13 @@ Points about the educational institute. Let's call it Rising Stars Academy.
 7. Students could be given an assignment during a lecture and are scored on it by the teacher.
 8. Periodically a teacher conducts an exam and exam can be given to multiple classes studying the same subject.
 9. Students are evaluated on the exams and aggregate from the exam above a cutoff qualifies them to the next class.
+
+
+For a typical Cassandra data model, we follow these steps in the given order.
+
+1. Identify the entities in the domain.
+2. Prepare an Entity-Relationship diagram.
+3. Identify workflow and access patterns of the data.
+4. Prepare a logical model. This step includes identifying the tables, partition key/s, Clustering column/s based on access patterns and ER diagram.
+5. Prepare physical models. Data types of the columns(including UDTs, UDFs and UDAs) are identified in this step.
+6. CQL script. This step included writing CQL scripts to create Keyspace, tables, UDTs, UDF and UDAs.
