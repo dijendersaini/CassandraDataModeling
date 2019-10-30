@@ -1,0 +1,10 @@
+#Identifying access patterns.
+In this steps, we typically identify the most frequent queries that will be fired against the data base. This will help up partition and cluster the data on Cassandra nodes thus helping in faster reads and writes. 
+
+For Rising Stars Academy, we have identified the following access patterns and we'll try to optimise our data for these access patterns. Please note this is the not an exhaustive list and access patterns can change over time. In that case we need to do a remodeling of the database.
+
+1. Fetch student data by StudentID
+2. Fetch list of students by ClassID. Here we are looking only for Student Name and Student Ids for students enrolled in a class.
+3. Student details and class ID by year. 
+4. Assignment results by studentID.
+5. Examination result by student ID.
