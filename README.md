@@ -1,4 +1,4 @@
-# CassandraDataModeling
+# Cassandra Data Modeling
 Case: Data modeling for Cassandra data base for an educational institute
 
 This is a case study for modeling database that takes advantage of faster reads and writes in Cassandra database. The domain chosen for this case study is an educational institute.
