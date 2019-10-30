@@ -1,10 +1,10 @@
 # Cassandra Data Modeling
 Case: Data modeling for Cassandra data base for an educational institute
 
-This is a case study for modeling database that takes advantage of faster reads and writes in Cassandra database. The domain chosen for this case study is an educational institute.
+This is a case study for modeling database that takes advantage of faster reads and writes in Cassandra database. The domain chosen for this case study is an educational institute. Objective of this case study is to highlight various aspects of Cassandra data modeling.
 
 Points about the educational institute. Let's call it Rising Stars Academy.
-1. Students are enrolled in a class and they remain in the class for a year. 
+1. Students are enrolled in a class and they remain in the class for a year where they study various subjects. All students in a class study the same set of subjects.
 2. After successful completion of the final exams they graduate to the next class. 
 3. There are various teachers who are assigned various departments based on the subjects.
 4. A teacher can teach multiple subjects.
