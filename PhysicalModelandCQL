@@ -1,0 +1,80 @@
+CREATE KEYSPACE CassandraDM WITH replication = 
+{'class':'SimpleStrategy', 
+'replication_factor':1};
+
+USE CassandraDM;
+
+CREATE TYPE communicationdetails(
+CellPhone TEXT,
+LandlinePhone TEXT,
+email TEXT
+)
+
+CREATE TYPE address(
+address TEXT,
+city TEXT,
+state TEXT
+zip TEXT
+)
+
+// Q1:
+CREATE TABLE studentDetailsByStudentID (
+    studentid TEXT, 
+    class_classid TEXT, 
+    class_subject TEXT, 
+    assigment_assignmentid TEXT, \
+    student_communicationdetails communicationdetails static, 
+    student_address address static, 
+    grade TEXT static, 
+    asignmentdate TEXT static, 
+    submissiondt TEXT static, 
+    examinationid TEXT static, 
+    score TEXT static, 
+    year TEXT static, 
+    PRIMARY KEY (studentid,class_classid,class_subject,assigment_assignmentid)) 
+    WITH CLUSTERING ORDER BY (class_classid DESC, class_subject ASC, assigment_assignmentid ASC);
+
+/* SELECT class_classid, class_subject, assigment_assignmentid, student_communicationdetails, student_address, grade, asignmentdate, submissiondt, examinationid, score, year 
+FROM studentDetailsByStudentID WHERE studentid=? ORDER BY class_classid DESC, class_subject ASC, assigment_assignmentid ASC; */
+
+// Q2:
+CREATE TABLE studentListByClassID (
+class_classid TEXT, 
+student_name TEXT, 
+studentid TEXT, 
+PRIMARY KEY (class_classid,student_name,studentid)) 
+WITH CLUSTERING ORDER BY (student_name ASC, studentid ASC);
+
+/* SELECT student_name, studentid FROM studentListByClassID WHERE class_classid=? ORDER BY student_name ASC, studentid ASC; */
+
+// Q3:
+CREATE TABLE classStudentDetailsByYear (
+year TEXT, 
+class_classid TEXT, 
+studentid TEXT, 
+student_name TEXT, 
+PRIMARY KEY (year,class_classid,studentid,student_name)) 
+WITH CLUSTERING ORDER BY (class_classid ASC, studentid ASC, student_name DESC);
+
+/* SELECT class_classid, studentid, student_name FROM classStudentDetailsByYear WHERE year=? ORDER BY class_classid ASC, studentid ASC, student_name DESC; */
+
+// Q4:
+CREATE TABLE assigmentResultByStudentID (
+studentid TEXT, 
+assigment_assignmentid TEXT, 
+assigment_classid TEXT, 
+grade TEXT, 
+submissiondt TEXT, 
+deadline TEXT, PRIMARY KEY (studentid));
+
+/* SELECT assigment_assignmentid, assigment_classid, grade, submissiondt, deadline FROM assigmentResultByStudentID WHERE studentid IN (?,?); */
+
+// Q5:
+CREATE TABLE examinationResultByStudentID (
+studentid TEXT, 
+class_classid TEXT, 
+examinationid TEXT, 
+score TEXT, PRIMARY KEY (studentid));
+
+/* SELECT class_classid, examinationid, score FROM examinationResultByStudentID WHERE studentid in (?,?); */
+
